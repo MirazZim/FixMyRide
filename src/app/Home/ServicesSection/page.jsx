@@ -1,4 +1,4 @@
-import dbConnect from '@/library/dbConnect/dbConnect'
+import dbConnect, { collectionNamesObject } from '@/library/dbConnect/dbConnect'
 import Image from 'next/image'
 import React from 'react'
 
@@ -163,7 +163,7 @@ export default async function ServicesSection() {
     //     }
     // ]
       
-    const serviceCollection = dbConnect('test_services')
+    const serviceCollection = dbConnect(collectionNamesObject.servicesCollection)
     const data = await serviceCollection.find({}).toArray()
     return (
         <div className='grid mt-10 grid-cols-12 gap-4 container mx-auto'>

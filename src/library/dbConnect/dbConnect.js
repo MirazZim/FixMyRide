@@ -2,6 +2,12 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 
 
 
+export const collectionNamesObject = {
+    servicesCollection: 'test_services'
+}
+
+
+
 export default function dbConnect(collectionName) {
     const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.qlurp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
     // Create a MongoClient with a MongoClientOptions object to set the Stable API version
