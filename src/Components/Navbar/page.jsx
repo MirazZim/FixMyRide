@@ -4,11 +4,11 @@ import Link from 'next/link'
 
 export default function Navbar() {
     const links = [
-        <li><Link href="/">Home</Link></li>, 
-        <li><Link href="/services">Services</Link></li>,
-        <li><Link href="/blogs">Blogs</Link></li>,
-        <li><Link href="/about">About</Link></li>,
-        <li><Link href="/contact">Contact</Link></li>
+        { href: "/", name: "Home" },
+        { href: "/services", name: "Services" },
+        { href: "/blogs", name: "Blogs" },
+        { href: "/about", name: "About" },
+        { href: "/contact", name: "Contact" }
     ]
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -20,7 +20,7 @@ export default function Navbar() {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        {links}
+                        {links.map(link => <li key={link.href}><Link href={link.href}>{link.name}</Link></li>)}
                     </ul>
                 </div>
                 <Link href="/" className="text-xl">
@@ -29,7 +29,7 @@ export default function Navbar() {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    {links}
+                    {links.map(link => <li key={link.href}><Link href={link.href}>{link.name}</Link></li>)}
                 </ul>
             </div>
             <div className="navbar-end">
