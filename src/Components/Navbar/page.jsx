@@ -32,8 +32,10 @@ export default function Navbar() {
                     {links.map(link => <li key={link.href}><Link href={link.href}>{link.name}</Link></li>)}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn btn-outline btn-l">Appointment</a>
+            <div className="navbar-end gap-2">
+                <Link href="/login" className="btn btn-outline btn-l gap-2">Login</Link>
+                <Link href="/register" className="btn btn-outline btn-l gap-2">Register</Link>
+                <a className="btn btn-outline btn-l gap-2">Appointment</a>
             </div>
         </div>
     )

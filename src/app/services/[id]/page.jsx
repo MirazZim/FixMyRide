@@ -73,17 +73,13 @@ export default async function ServiceDetailsPage({ params }) {
                         ))}
                     </div>
 
-                    {/* Steps Section */}
-                    <div className="bg-white p-6 rounded-xl shadow-md">
-                        <h2 className="text-2xl font-extrabold text-gray-800 mb-4">3 Simple Steps to Process</h2>
-                        <p className="text-gray-600">{data.process}</p>
-                    </div>
+                    
                 </div>
 
                 {/* Sidebar Section */}
                 <div className="p-6 bg-white rounded-xl shadow-md">
                     {/* Services List */}
-                    <div className="bg-white p-6 rounded-xl shadow-2xl ">
+                    <div className="bg-white p-6 rounded-xl shadow-2xl border-gray-700 ">
                         <h3 className="text-2xl font-extrabold text-gray-800 mb-4">Services</h3>
                         <ul className="space-y-3">
 
@@ -161,7 +157,7 @@ export default async function ServiceDetailsPage({ params }) {
 
 
                     {/* Download Section */}
-                    <div className="mt-4 bg-black border-2 border-blue-500 p-4 text-white rounded-xl shadow-md">
+                    <div className="mt-4 bg-black border-2 border-gray-700 p-4 text-white rounded-xl shadow-md">
                         <h3 className="text-xl font-bold mb-4">Download</h3>
                         <div className="flex flex-col gap-2">
                             <button className="bg-gradient-to-r from-gray-100 to-gray-200 
