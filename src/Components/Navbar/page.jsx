@@ -62,13 +62,13 @@ export default function Navbar() {
 
                     {/* Desktop CTA Buttons */}
                     <div className="hidden lg:flex space-x-4">
-                        <Link href="/login" className="px-6 py-2 rounded-full bg-white border border-gray-300 shadow-sm hover:bg-gray-100 hover:shadow-md transition-all duration-300">
+                        <Link href="/login" className="px-5 py-2 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
                             Login
                         </Link>
-                        <Link href="/register" className="px-6 py-2 rounded-full bg-white border border-gray-300 shadow-sm hover:bg-gray-100 hover:shadow-md transition-all duration-300">
+                        <Link href="/register" className="px-4 py-2 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
                             Register
                         </Link>
-                        <Link href="/appointment" className="px-6 py-2 rounded-full bg-red-500 text-white hover:bg-red-600 shadow-md transition-all duration-300">
+                        <Link href="/appointment" className="w-1/2 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
                             Make an Appointment
                         </Link>
                     </div>
