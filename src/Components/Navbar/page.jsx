@@ -1,42 +1,161 @@
-import Image from 'next/image'
-import Link from 'next/link'
-
+"use client";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const sideMenuRef = useRef(null);
+    
     const links = [
         { href: "/", name: "Home" },
         { href: "/services", name: "Services" },
         { href: "/blogs", name: "Blogs" },
         { href: "/about", name: "About" },
         { href: "/contact", name: "Contact" }
-    ]
+    ];
+
+    // Handle click outside to close menu
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (sideMenuRef.current && !sideMenuRef.current.contains(event.target) && menuOpen) {
+                setMenuOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [menuOpen]);
+
+    // Prevent body scrolling when menu is open
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [menuOpen]);
+
     return (
-        <div className="navbar bg-base-100 shadow-sm">
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-                    </div>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        {links.map(link => <li key={link.href}><Link href={link.href}>{link.name}</Link></li>)}
-                    </ul>
-                </div>
-                <Link href="/" className="text-xl">
-                    <Image src={'/assets/logo.svg'} alt="Logo" width={107} height={87} />
+        <>
+            <nav className="sticky top-0 rounded-tl-lg rounded-tr-lg bg-white shadow-sm z-40">
+                <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center space-x-3">
+                        <Image src="/assets/logo.svg" alt="Logo" width={180} height={180} className="h-16 w-auto" />
                     </Link>
+
+                    {/* Desktop Menu (hidden on mobile) */}
+                    <div className="hidden lg:flex space-x-8 absolute left-1/2 transform -translate-x-1/2">
+                        {links.map(link => (
+                            <Link key={link.href} href={link.href} className="relative text-gray-700 font-medium transition-all duration-300 after:block after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-red-500 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                                {link.name}
+                            </Link>
+                        ))}
+                    </div>
+
+                    {/* Desktop CTA Buttons */}
+                    <div className="hidden lg:flex space-x-4">
+                        <Link href="/login" className="px-6 py-2 rounded-full bg-white border border-gray-300 shadow-sm hover:bg-gray-100 hover:shadow-md transition-all duration-300">
+                            Login
+                        </Link>
+                        <Link href="/register" className="px-6 py-2 rounded-full bg-white border border-gray-300 shadow-sm hover:bg-gray-100 hover:shadow-md transition-all duration-300">
+                            Register
+                        </Link>
+                        <Link href="/appointment" className="px-6 py-2 rounded-full bg-red-500 text-white hover:bg-red-600 shadow-md transition-all duration-300">
+                            Make an Appointment
+                        </Link>
+                    </div>
+
+                    {/* Cool Mobile Menu Button */}
+                    <button 
+                        className="lg:hidden relative w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-md hover:shadow-lg border border-gray-100 transition-all duration-300 overflow-hidden group"
+                        aria-label={menuOpen ? "Close menu" : "Open menu"}
+                        onClick={() => setMenuOpen(!menuOpen)}>
+                        <div className="relative w-5 flex flex-col items-center justify-center gap-1.5">
+                            <span className={`block h-0.5 w-5 bg-gray-800 rounded-full transform transition-all duration-300 ease-out ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                            <span className={`block h-0.5 w-3.5 ml-auto bg-red-500 rounded-full transition-all duration-300 ${menuOpen ? 'opacity-0 translate-x-3' : ''}`}></span>
+                            <span className={`block h-0.5 w-5 bg-gray-800 rounded-full transform transition-all duration-300 ease-out ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                        </div>
+                        <div className={`absolute inset-0 bg-red-50 scale-0 rounded-full transition-all duration-300 ${menuOpen ? 'scale-100' : ''}`}></div>
+                    </button>
+                </div>
+            </nav>
+            
+            {/* Overlay */}
+            <div 
+                className={`fixed inset-0 bg-black/50 z-50 lg:hidden transition-opacity duration-300 ${menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                onClick={() => setMenuOpen(false)}
+                aria-hidden="true"
+            ></div>
+            
+            {/* Side Menu Panel */}
+            <div 
+                ref={sideMenuRef}
+                className={`fixed top-0 right-0 w-full max-w-xs h-full bg-white z-50 lg:hidden transform transition-transform duration-300 ease-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                tabIndex={menuOpen ? 0 : -1}
+                role="dialog"
+                aria-modal="true"
+            >
+                {/* Menu content remains the same */}
+                <div className="flex h-full flex-col overflow-y-auto shadow-xl">
+                    <div className="flex items-center justify-between px-4 py-6 border-b border-gray-200">
+                        <h2 className="text-lg font-semibold text-gray-900">Menu</h2>
+                        <button
+                            type="button"
+                            className="rounded-md p-2 text-gray-400 hover:bg-gray-100"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            <span className="sr-only">Close panel</span>
+                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <nav className="flex-1 px-4 py-6 space-y-1">
+                        {links.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="block px-3 py-3 text-base font-medium text-gray-900 rounded-md hover:bg-gray-50"
+                                onClick={() => setMenuOpen(false)}
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
+                    </nav>
+                    
+                    <div className="border-t border-gray-200 px-4 py-6 space-y-3">
+                        <Link
+                            href="/login"
+                            className="flex w-full items-center justify-center rounded-md bg-red-500 px-3 py-3 text-base font-medium text-white shadow-sm hover:bg-red-600 transition-colors"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            href="/register"
+                            className="flex w-full items-center justify-center rounded-md bg-gray-800 px-3 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-900 transition-colors"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            Register
+                        </Link>
+                        <a
+                            className="flex w-full items-center justify-center rounded-md border border-red-500 px-3 py-3 text-base font-medium text-red-500 shadow-sm hover:bg-red-500 hover:text-white transition-colors"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            Appointment
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    {links.map(link => <li key={link.href}><Link href={link.href}>{link.name}</Link></li>)}
-                </ul>
-            </div>
-            <div className="navbar-end gap-2">
-                <Link href="/login" className="btn btn-outline btn-l gap-2">Login</Link>
-                <Link href="/register" className="btn btn-outline btn-l gap-2">Register</Link>
-                <a className="btn btn-outline btn-l gap-2">Appointment</a>
-            </div>
-        </div>
-    )
+        </>
+    );
 }
