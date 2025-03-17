@@ -3,7 +3,8 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 
 
 export const collectionNamesObject = {
-    servicesCollection: 'test_services'
+    servicesCollection: 'test_services',
+    usersCollection: 'test_user'
 }
 
 

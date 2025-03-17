@@ -62,10 +62,10 @@ export default function Navbar() {
 
                     {/* Desktop CTA Buttons */}
                     <div className="hidden lg:flex space-x-4">
-                        <Link href="/login" className="px-5 py-2 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                        <Link href="/login" className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
                             Login
                         </Link>
-                        <Link href="/register" className="px-4 py-2 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                        <Link href="/register" className="px-4 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
                             Register
                         </Link>
                         <Link href="/appointment" className="w-1/2 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
