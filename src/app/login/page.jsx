@@ -2,7 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import LoginForm from './components/LoginForm';
-import { FaGithub, FaGithubAlt, FaGoogle } from 'react-icons/fa';
+
+import SocialLogin from './components/SocialLogin';
 
 
 export default function Login() {
@@ -31,24 +32,11 @@ export default function Login() {
 
           <div className="text-center mt-6">
             <p className="text-gray-600">or sign in with</p>
-            <div className="flex items-center justify-center space-x-4 mt-5">
-              <button
-                type="button"
-                className="w-full bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 rounded-xl shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105"
-              >
-                <div className="flex items-center justify-center">
-                  <FaGoogle className="mx-auto" />
-                </div>
-              </button>
-              <button
-                type="button"
-                className="w-full bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 rounded-xl shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105"
-              >
-                <div className="flex items-center justify-center">
-                  <FaGithub className="mx-auto" />
-                </div>
-              </button>
-            </div>
+           
+
+           {/* Social Login */}
+            <SocialLogin/>
+
           </div>
 
           <div className="text-center mt-6">
