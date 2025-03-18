@@ -12,6 +12,7 @@ export default function LoginForm() {
         const email = form.email.value;
         const password = form.password.value;
         const data = { email, password };
+        
         try {
             const result = await signIn('credentials', {
                 ...data,
@@ -19,6 +20,7 @@ export default function LoginForm() {
             });
 
             if (result?.error) {
+                
                 Swal.fire({
                     title: "Error!",
                     text: "You have failed to login!",
@@ -26,6 +28,7 @@ export default function LoginForm() {
                   });
                  // Show error message if login fails
             } else {
+                
                 Swal.fire({
                     title: "Good job!",
                     text: "You have successfully logged in!",

@@ -5,7 +5,7 @@ import RegisterForm from './components/RegisterForm';
 
 export default function Register() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white p-6">
+    <div className="flex items-center justify-center mt-12 bg-white p-2">
       <div className="w-full max-w-3xl bg-white rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 transform transition-all duration-500 hover:scale-105">
         {/* Left Side - Image with Different Style */}
         <div className="hidden md:flex items-center justify-center relative bg-gray-50 border-r border-gray-200 p-6">

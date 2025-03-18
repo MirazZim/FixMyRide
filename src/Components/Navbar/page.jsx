@@ -77,12 +77,8 @@ export default function Navbar() {
                                 <Link href="/register" className="px-4 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
                                     Register
                                 </Link>
-                                <Link href="/appointment" className="w-1/2 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
-                           Make an Appointment
-                        </Link>
                             </>
                         )}
-                        
                     </div>
 
                     {/* Cool Mobile Menu Button */}
@@ -165,13 +161,7 @@ export default function Navbar() {
                         >
                             Register
                         </Link>
-                                <Link
-                                    href="/appointment"
-                                    className="flex w-full items-center justify-center rounded-md border border-red-500 px-3 py-3 text-base font-medium text-red-500 shadow-sm hover:bg-red-500 hover:text-white transition-colors"
-                                    onClick={() => setMenuOpen(false)}
-                                >
-                                    Appointment
-                                </Link>
+                                
                             </>
                         )}
                     </div>

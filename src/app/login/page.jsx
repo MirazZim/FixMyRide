@@ -2,11 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import LoginForm from './components/LoginForm';
+import { FaGithub, FaGithubAlt, FaGoogle } from 'react-icons/fa';
 
 
 export default function Login() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white p-6">
+    <div className="flex items-center justify-center mt-12 bg-white p-2">
       <div className="w-full max-w-3xl bg-white rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 transform transition-all duration-500 hover:scale-105">
         {/* Left Side - Image with Different Style */}
         <div className="hidden md:flex items-center justify-center relative bg-gray-50 border-r border-gray-200 p-6">
@@ -30,7 +31,24 @@ export default function Login() {
 
           <div className="text-center mt-6">
             <p className="text-gray-600">or sign in with</p>
-            {/* Add social login buttons if needed */}
+            <div className="flex items-center justify-center space-x-4 mt-5">
+              <button
+                type="button"
+                className="w-full bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 rounded-xl shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105"
+              >
+                <div className="flex items-center justify-center">
+                  <FaGoogle className="mx-auto" />
+                </div>
+              </button>
+              <button
+                type="button"
+                className="w-full bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 rounded-xl shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105"
+              >
+                <div className="flex items-center justify-center">
+                  <FaGithub className="mx-auto" />
+                </div>
+              </button>
+            </div>
           </div>
 
           <div className="text-center mt-6">
