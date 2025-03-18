@@ -7,9 +7,8 @@ import { useState, useEffect, useRef } from 'react';
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const sideMenuRef = useRef(null);
-    const {data : session, status}= useSession();
-    console.log(session);
-    
+    const { data: session, status } = useSession();
+
     const links = [
         { href: "/", name: "Home" },
         { href: "/services", name: "Services" },
@@ -39,7 +38,7 @@ export default function Navbar() {
         } else {
             document.body.style.overflow = 'auto';
         }
-        
+
         return () => {
             document.body.style.overflow = 'auto';
         };
@@ -54,38 +53,73 @@ export default function Navbar() {
                         <Image src="/assets/logo.svg" alt="Logo" width={180} height={180} className="h-16 w-auto" />
                     </Link>
 
-                    {/* Desktop Menu (hidden on mobile) */}
+                    {/* Desktop Menu */}
                     <div className="hidden lg:flex space-x-8 absolute left-1/2 transform -translate-x-1/2">
                         {links.map(link => (
-                            <Link key={link.href} href={link.href} className="relative text-gray-700 font-medium transition-all duration-300 after:block after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-red-500 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                            <Link 
+                                key={link.href} 
+                                href={link.href} 
+                                className="relative text-gray-700 font-medium transition-all duration-300 after:block after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-red-500 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300"
+                            >
                                 {link.name}
                             </Link>
                         ))}
                     </div>
 
                     {/* Desktop CTA Buttons */}
-                    <div className="hidden lg:flex space-x-4">
+                    <div className="hidden lg:flex items-center space-x-4">
                         {status === 'authenticated' ? (
-                            <button onClick={() => signOut()} className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
-                                Logout
-                            </button>
+                            <>
+                                <div className="dropdown dropdown-end">
+                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar h-[60px] w-[60px]">
+                                        <div className="w-full h-full rounded-full overflow-hidden">
+                                            <Image
+                                                alt="Profile"
+                                                src={session?.user?.image || "https://lh3.googleusercontent.com/a/ACg8ocIP4ZCciXvkeKEdo8NqGQHSIUGx5lKM2UFWJFhMJNfhjfj2W_Rd=s96-c"}
+                                                width={500}
+                                                height={500}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
+                                    </div>
+                                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow-lg bg-base-100 rounded-box w-52 flex flex-col space-y-2 z-[1]">
+                                        <li>
+                                            <a className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                                                Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105" onClick={() => signOut()}>
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </>
                         ) : (
                             <>
-                                <Link href="/login" className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                                <Link
+                                    href="/login"
+                                    className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105"
+                                >
                                     Login
                                 </Link>
-                                <Link href="/register" className="px-4 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                                <Link
+                                    href="/register"
+                                    className="px-4 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105"
+                                >
                                     Register
                                 </Link>
                             </>
                         )}
                     </div>
 
-                    {/* Cool Mobile Menu Button */}
-                    <button 
+                    {/* Mobile Menu Button */}
+                    <button
                         className="lg:hidden relative w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-md hover:shadow-lg border border-gray-100 transition-all duration-300 overflow-hidden group"
                         aria-label={menuOpen ? "Close menu" : "Open menu"}
-                        onClick={() => setMenuOpen(!menuOpen)}>
+                        onClick={() => setMenuOpen(!menuOpen)}
+                    >
                         <div className="relative w-5 flex flex-col items-center justify-center gap-1.5">
                             <span className={`block h-0.5 w-5 bg-gray-800 rounded-full transform transition-all duration-300 ease-out ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
                             <span className={`block h-0.5 w-3.5 ml-auto bg-red-500 rounded-full transition-all duration-300 ${menuOpen ? 'opacity-0 translate-x-3' : ''}`}></span>
@@ -95,36 +129,58 @@ export default function Navbar() {
                     </button>
                 </div>
             </nav>
-            
+
             {/* Overlay */}
-            <div 
+            <div
                 className={`fixed inset-0 bg-black/50 z-50 lg:hidden transition-opacity duration-300 ${menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 onClick={() => setMenuOpen(false)}
                 aria-hidden="true"
             ></div>
-            
+
             {/* Side Menu Panel */}
-            <div 
+            <div
                 ref={sideMenuRef}
                 className={`fixed top-0 right-0 w-full max-w-xs h-full bg-white z-50 lg:hidden transform transition-transform duration-300 ease-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
                 tabIndex={menuOpen ? 0 : -1}
                 role="dialog"
                 aria-modal="true"
             >
-                {/* Menu content remains the same */}
                 <div className="flex h-full flex-col overflow-y-auto shadow-xl">
-                    <div className="flex items-center justify-between px-4 py-6 border-b border-gray-200">
-                        <h2 className="text-lg font-semibold text-gray-900">Menu</h2>
-                        <button
-                            type="button"
-                            className="rounded-md p-2 text-gray-400 hover:bg-gray-100"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            <span className="sr-only">Close panel</span>
-                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
+                    <div className="px-4 py-6 border-b border-gray-200">
+                        {/* Profile Section for Authenticated Users */}
+                        {status === 'authenticated' ? (
+                            <div className="flex items-center space-x-3">
+                                <div className="btn btn-ghost btn-circle avatar h-[60px] w-[60px]">
+                                    <div className="w-full h-full rounded-full overflow-hidden shadow-md">
+                                        <Image
+                                            alt="Profile"
+                                            src={session?.user?.image || "https://lh3.googleusercontent.com/a/ACg8ocIP4ZCciXvkeKEdo8NqGQHSIUGx5lKM2UFWJFhMJNfhjfj2W_Rd=s96-c"}
+                                            width={500}
+                                            height={500}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-lg font-semibold text-gray-900">{session?.user?.name || "User"}</span>
+                                    <span className="text-sm text-gray-500">{session?.user?.email}</span>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="flex items-center justify-between">
+                                <h2 className="text-lg font-semibold text-gray-900">Menu</h2>
+                                <button
+                                    type="button"
+                                    className="rounded-md p-2 text-gray-400 hover:bg-gray-100"
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    <span className="sr-only">Close panel</span>
+                                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                        )}
                     </div>
                     
                     <nav className="flex-1 px-4 py-6 space-y-1">
@@ -138,11 +194,24 @@ export default function Navbar() {
                                 {link.name}
                             </Link>
                         ))}
+                        {/* Add Profile Link for Authenticated Users */}
+                        {status === 'authenticated' && (
+                            <Link
+                                href="/profile"
+                                className="block px-3 py-3 text-base font-medium text-gray-900 rounded-md hover:bg-gray-50"
+                                onClick={() => setMenuOpen(false)}
+                            >
+                                Profile
+                            </Link>
+                        )}
                     </nav>
                     
                     <div className="border-t border-gray-200 px-4 py-6 space-y-3">
                         {status === 'authenticated' ? (
-                            <button onClick={() => signOut()} className="flex w-full items-center justify-center rounded-md bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                            <button 
+                                onClick={() => signOut()} 
+                                className="flex w-full items-center justify-center rounded-md bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105"
+                            >
                                 Logout
                             </button>
                         ) : (
@@ -153,15 +222,14 @@ export default function Navbar() {
                                     onClick={() => setMenuOpen(false)}
                                 >
                                     Login
-                        </Link>
-                        <Link
-                            href="/register"
-                            className="flex w-full items-center justify-center rounded-md bg-gray-800 px-3 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-900 transition-colors"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            Register
-                        </Link>
-                                
+                                </Link>
+                                <Link
+                                    href="/register"
+                                    className="flex w-full items-center justify-center rounded-md bg-gray-800 px-3 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-900 transition-colors"
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    Register
+                                </Link>
                             </>
                         )}
                     </div>

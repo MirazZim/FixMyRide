@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import RegisterForm from './components/RegisterForm';
+import SocialLogin from '../login/components/SocialLogin';
 
 export default function Register() {
   return (
@@ -30,6 +31,9 @@ export default function Register() {
           <div className="text-center mt-6">
             <p className="text-gray-600">or sign up with</p>
           </div>
+
+          {/* Social Login */}
+          <SocialLogin/>
 
           <div className="text-center mt-6">
             <p className="text-gray-700">Already have an account?{' '}

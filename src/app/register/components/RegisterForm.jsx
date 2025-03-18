@@ -36,6 +36,16 @@ export default function RegisterForm() {
             </div>
 
             <div>
+                <label htmlFor="photoURL" className="text-gray-700 font-medium">PhotoURL</label>
+                <input
+                    type="text"
+                    name="photoURL"
+                    placeholder="Enter your photo URL"
+                    className="w-full p-3 mt-2 bg-gray-50 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300"
+                />
+            </div>
+
+            <div>
                 <label htmlFor="password" className="text-gray-700 font-medium">Password</label>
                 <input
                     type="password"
