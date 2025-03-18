@@ -30,8 +30,12 @@ export const registerUser = async (payload) => {
         const result = await userCollection.insertOne(payload);
 
         // Extract values from the result
-        const { _id, acknowledged } = result;  // `_id` is the MongoDB document ID
-        const insertedId = result.insertedId.toString(); // Convert ObjectId to string for safe use
+        // `_id` is the MongoDB document ID
+        const { _id, acknowledged } = result;
+        
+        
+        // Convert ObjectId to string for safe use
+        const insertedId = result.insertedId.toString();
 
         // Return success response
         return { _id, acknowledged, insertedId };

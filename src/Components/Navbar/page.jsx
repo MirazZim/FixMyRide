@@ -1,4 +1,5 @@
 "use client";
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
@@ -6,6 +7,8 @@ import { useState, useEffect, useRef } from 'react';
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const sideMenuRef = useRef(null);
+    const {data : session, status}= useSession();
+    console.log(session);
     
     const links = [
         { href: "/", name: "Home" },
@@ -62,15 +65,24 @@ export default function Navbar() {
 
                     {/* Desktop CTA Buttons */}
                     <div className="hidden lg:flex space-x-4">
-                        <Link href="/login" className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
-                            Login
+                        {status === 'authenticated' ? (
+                            <button onClick={() => signOut()} className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                                Logout
+                            </button>
+                        ) : (
+                            <>
+                                <Link href="/login" className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                                    Login
+                                </Link>
+                                <Link href="/register" className="px-4 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                                    Register
+                                </Link>
+                                <Link href="/appointment" className="w-1/2 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                           Make an Appointment
                         </Link>
-                        <Link href="/register" className="px-4 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
-                            Register
-                        </Link>
-                        <Link href="/appointment" className="w-1/2 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
-                            Make an Appointment
-                        </Link>
+                            </>
+                        )}
+                        
                     </div>
 
                     {/* Cool Mobile Menu Button */}
@@ -133,12 +145,18 @@ export default function Navbar() {
                     </nav>
                     
                     <div className="border-t border-gray-200 px-4 py-6 space-y-3">
-                        <Link
-                            href="/login"
-                            className="flex w-full items-center justify-center rounded-md bg-red-500 px-3 py-3 text-base font-medium text-white shadow-sm hover:bg-red-600 transition-colors"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            Login
+                        {status === 'authenticated' ? (
+                            <button onClick={() => signOut()} className="flex w-full items-center justify-center rounded-md bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 font-semibold px-5 py-3 shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                                Logout
+                            </button>
+                        ) : (
+                            <>
+                                <Link
+                                    href="/login"
+                                    className="flex w-full items-center justify-center rounded-md bg-red-500 px-3 py-3 text-base font-medium text-white shadow-sm hover:bg-red-600 transition-colors"
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    Login
                         </Link>
                         <Link
                             href="/register"
@@ -147,12 +165,15 @@ export default function Navbar() {
                         >
                             Register
                         </Link>
-                        <a
-                            className="flex w-full items-center justify-center rounded-md border border-red-500 px-3 py-3 text-base font-medium text-red-500 shadow-sm hover:bg-red-500 hover:text-white transition-colors"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            Appointment
-                        </a>
+                                <Link
+                                    href="/appointment"
+                                    className="flex w-full items-center justify-center rounded-md border border-red-500 px-3 py-3 text-base font-medium text-red-500 shadow-sm hover:bg-red-500 hover:text-white transition-colors"
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    Appointment
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

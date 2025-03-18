@@ -1,5 +1,6 @@
 "use client";
 import {  signIn } from "next-auth/react";
+import Swal from "sweetalert2";
 // import { useRouter } from "next/navigation";
 
 
@@ -18,8 +19,18 @@ export default function LoginForm() {
             });
 
             if (result?.error) {
-                alert("Authentication Failed"); // Show error message if login fails
+                Swal.fire({
+                    title: "Error!",
+                    text: "You have failed to login!",
+                    icon: "error"
+                  });
+                 // Show error message if login fails
             } else {
+                Swal.fire({
+                    title: "Good job!",
+                    text: "You have successfully logged in!",
+                    icon: "success"
+                  });
                 window.location.href = "/"; // Redirect to home page
             }
         } catch (error) {
