@@ -6,8 +6,8 @@ import React from 'react';
 
 export default async function ServiceDetailsPage({ params }) {
     const p = await params;
-    const serviceCollection = dbConnect(collectionNamesObject.servicesCollection);
-    const data = await serviceCollection.findOne({ _id: new ObjectId(p.id) });
+    const res = await fetch(`http://localhost:3000/api/service/${p.id}`);
+    const data = await res.json();
 
     return (
         <div className="bg-gray-50 min-h-screen">
