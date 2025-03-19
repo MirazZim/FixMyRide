@@ -12,9 +12,10 @@ export default function Navbar() {
     const links = [
         { href: "/", name: "Home" },
         { href: "/services", name: "Services" },
-        { href: "/blogs", name: "Blogs" },
+        { href: "/my-bookings", name: "My Bookings" },
         { href: "/about", name: "About" },
-        { href: "/contact", name: "Contact" }
+        { href: "/contact", name: "Contact" },
+        
     ];
 
     // Handle click outside to close menu

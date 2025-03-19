@@ -68,7 +68,7 @@ export default function CheckoutForm({ data }) {
                                         type="text"
                                         name="name"
                                         placeholder="Your Name"
-                                        className="w-full p-4 bg-gray-50/70 border border-gray-200 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white transition-all duration-300 shadow-sm"
+                                        className="w-full p-3 mt-2 bg-gray-50 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300"
                                         required
                                     />
                                 </div>
@@ -79,7 +79,7 @@ export default function CheckoutForm({ data }) {
                                     <input
                                         type="date"
                                         name="date"
-                                        className="w-full p-4 bg-gray-50/70 border border-gray-200 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white transition-all duration-300 shadow-sm"
+                                        className="w-full p-3 mt-2 bg-gray-50 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300"
                                         required
                                     />
                                 </div>
@@ -95,7 +95,7 @@ export default function CheckoutForm({ data }) {
                                         type="email"
                                         name="email"
                                         placeholder="Your Email"
-                                        className="w-full p-4 bg-gray-50/70 border border-gray-200 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white transition-all duration-300 shadow-sm"
+                                        className="w-full p-3 mt-2 bg-gray-50 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300"
                                         required
                                     />
                                 </div>
@@ -109,7 +109,7 @@ export default function CheckoutForm({ data }) {
                                         type="number"
                                         name="dueAmount"
                                         placeholder="Due Amount"
-                                        className="w-full p-4 bg-gray-50/70 border border-gray-200 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white transition-all duration-300 shadow-sm"
+                                        className="w-full p-3 mt-2 bg-gray-50 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300"
                                         required
                                     />
                                 </div>
@@ -124,7 +124,7 @@ export default function CheckoutForm({ data }) {
                                         type="tel"
                                         name="phone"
                                         placeholder="Your Phone"
-                                        className="w-full p-4 bg-gray-50/70 border border-gray-200 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white transition-all duration-300 shadow-sm"
+                                        className="w-full p-3 mt-2 bg-gray-50 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300"
                                         required
                                     />
                                 </div>
@@ -136,7 +136,7 @@ export default function CheckoutForm({ data }) {
                                         type="text"
                                         name="address"
                                         placeholder="Your Address"
-                                        className="w-full p-4 bg-gray-50/70 border border-gray-200 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white transition-all duration-300 shadow-sm"
+                                        className="w-full p-3 mt-2 bg-gray-50 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300"
                                         required
                                     />
                                 </div>
