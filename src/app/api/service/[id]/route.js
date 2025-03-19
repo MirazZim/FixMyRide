@@ -10,9 +10,7 @@ export const GET = async (req, { params }) => {
     return NextResponse.json(data);
 }
 
-// export const POST = async (req) => {
-    
-// }
+
 
 // export const PUT = async (req) => {
     
