@@ -62,16 +62,7 @@ export default async function ServicesSection() {
     )
 }
 
-/* 
-import dbConnect, { collectionNamesObject } from "@/library/dbConnect/dbConnect";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { FaArrowRight } from "react-icons/fa";
 
-export default async function ServicesSection() {
-  /* DB Connection */
-// const serviceCollection = dbConnect(collectionNamesObject.servicesCollection);
 // const data = await serviceCollection.find({}).toArray();
 // /* ........................................................ */
 
