@@ -1,6 +1,7 @@
 "use client";
 
 import { registerUser } from "@/app/actions/auth/registerUser";
+import Swal from "sweetalert2";
 
 export default function RegisterForm() {
     const handleSubmit = async (e) => {
@@ -10,8 +11,23 @@ export default function RegisterForm() {
         const email = form.email.value;
         const password = form.password.value;
         const data = { name, email, password };
-        await registerUser(data);
-
+        const result = await registerUser(data);
+        if (result?.error) {
+            Swal.fire({
+                title: "Error!",
+                text: "You have failed to login!",
+                icon: "error"
+              });
+             // Show error message if login fails
+        } else {
+            Swal.fire({
+                title: "Good job!",
+                text: "You have successfully registered!",
+                icon: "success"
+              });
+            window.location.href = "/login";
+        }
+       
     }
     return (
         <form onSubmit={handleSubmit} action="" className="space-y-5">

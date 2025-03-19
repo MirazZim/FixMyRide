@@ -1,33 +1,30 @@
 "use client";
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 
 export default function SocialLogin() {
-    const handleSocialLogin = async (providerName) => {
-        console.log("Social Login",providerName);
-
-        const result = await signIn(providerName, {
-            redirect: false
-        })
-
-        if (result?.error) {
-            Swal.fire({
-                title: "Error!",
-                text: "You have failed to login!",
-                icon: "error"
-              });
-             // Show error message if login fails
-        } else {
+    const router = useRouter();
+    const session = useSession();
+    const handleSocialLogin =(providerName, router) => {
+       signIn(providerName)
+    };
+    
+    useEffect(() => {
+        if (session?.status === 'authenticated') {
+            router.push('/');
             Swal.fire({
                 title: "Good job!",
-                text: "You have successfully logged in!",
+                text: `You have successfully logged in !`,
                 icon: "success"
               });
-            window.location.href = "/"; // Redirect to home page
         }
-        
-    }
+    },[session?.status])
+
+
     return (
         <div className="flex items-center justify-center space-x-4 mt-5">
             <button
