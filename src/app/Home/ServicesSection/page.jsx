@@ -38,6 +38,7 @@ export default async function ServicesSection() {
                             <p className='font-bold text-xl text-orange-500'>${service.price}</p>
                         </div>
                         <div>
+                        <Link href={`/services/${service._id}`} className='text-black hover:text-white'>
                             <button className='bg-gradient-to-r from-gray-100 to-gray-200 
                                                text-gray-800 font-bold
                                                px-4 py-3 
@@ -49,10 +50,11 @@ export default async function ServicesSection() {
                                                 hover:to-red-700 
                                                hover:text-white
                                                transition-all duration-300'>
-                            <Link href={`/services/${service._id}`} className='text-black hover:text-white'>
+                            
                                 <FaArrowRight /> 
-                            </Link>
+                           
                             </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

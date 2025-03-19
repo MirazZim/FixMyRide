@@ -64,7 +64,7 @@ export default function MyBookingTable({ data }) {
                   </td>
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-3">
-                      <Link href={`/my-bookings/update/${booking._id}`}>
+                      <Link href={`/my-bookings/${booking._id}`}>
                         <button className="px-3 py-1 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition-all duration-200">
                           Edit
                         </button>
