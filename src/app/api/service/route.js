@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
     const body = await req.json();
-    console.log(body);
-    return NextResponse.json({});
+    const bookingsCollection = dbConnect(collectionNamesObject.bookingsCollection);
+    const result = await bookingsCollection.insertOne(body);
+    return NextResponse.json(result);
 }

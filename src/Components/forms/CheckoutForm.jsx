@@ -1,6 +1,8 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 export default function CheckoutForm({ data }) {
     const { data: session } = useSession();
@@ -33,6 +35,15 @@ export default function CheckoutForm({ data }) {
             body: JSON.stringify(bookingData),
         });
         const result = await res.json();
+        if (result.acknowledged) {
+            Swal.fire({
+                title: "Good job!",
+                text: "You have successfully booked the service!",
+                icon: "success"
+              });
+              form.reset();
+              window.location.href = "/";
+        }
         console.log(result);
     };
 
