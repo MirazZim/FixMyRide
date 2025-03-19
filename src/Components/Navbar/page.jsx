@@ -47,11 +47,11 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="sticky top-0 rounded-tl-lg rounded-tr-lg bg-white shadow-sm z-40">
+            <nav className="sticky top-0 rounded-4xl bg-white shadow-sm z-40">
                 <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-3">
-                        <Image src="/assets/logo.svg" alt="Logo" width={180} height={180} className="h-16 w-auto" />
+                        <Image src="/assets/logo.svg" alt="Logo" width={480} height={480} className="h-20 w-auto" />
                     </Link>
 
                     {/* Desktop Menu */}

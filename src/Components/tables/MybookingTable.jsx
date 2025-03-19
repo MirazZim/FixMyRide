@@ -2,11 +2,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function MybookingTable({ data }) {
+export default function MyBookingTable({ data }) {
   return (
     <div className="container mx-auto px-6 py-10 bg-gray-100 min-h-screen">
       {/* Header Section */}
-      <div className="relative h-64 overflow-hidden rounded-xl shadow-md">
+      <div className="relative h-64 overflow-hidden rounded-3xl shadow-2xl">
         <Image
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-105"
           src="/assets/images/about_us/parts.jpg"
@@ -16,14 +16,14 @@ export default function MybookingTable({ data }) {
           priority
         />
         <div className="absolute inset-0 bg-black/40 flex items-center">
-          <h1 className="text-white text-4xl font-semibold ml-8 tracking-wide">
+          <h1 className="text-white text-5xl font-bold ml-8 tracking-wide">
             My Bookings
           </h1>
         </div>
       </div>
 
       {/* Table Section */}
-      <div className="mt-10 bg-white rounded-xl shadow-sm">
+      <div className="mt-10 bg-white rounded-3xl shadow-md">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-separate" style={{ borderSpacing: "0 8px" }}>
             <thead className="text-gray-500 text-xs font-medium uppercase tracking-widest">
@@ -42,13 +42,15 @@ export default function MybookingTable({ data }) {
                   className="bg-white hover:bg-gray-50 transition-all duration-200 ease-in-out rounded-lg shadow-sm"
                 >
                   <td className="py-4 px-6">
-                    <img
-                      src={booking.service_image}
-                      alt={booking.service_name}
-                      width={40}
-                      height={40}
-                      className="rounded-md object-cover transition-transform duration-300 hover:scale-110"
-                    />
+                    <div className="relative h-40 w-40 rounded-full overflow-hidden">
+                      <Image
+                        src={booking.service_image}
+                        alt={booking.service_name}
+                        width={200}
+                        height={200}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 hover:scale-125"
+                      />
+                    </div>
                   </td>
                   <td className="py-4 px-6 font-medium text-base">{booking.service_name}</td>
                   <td className="py-4 px-6 text-gray-700">${booking.service_price}</td>
@@ -62,7 +64,7 @@ export default function MybookingTable({ data }) {
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-3">
                       <Link href={`/my-bookings/update/${booking._id}`}>
-                        <button className="px-3 py-1 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900 transition-all duration-200">
+                        <button className="px-3 py-1 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition-all duration-200">
                           Edit
                         </button>
                       </Link>
