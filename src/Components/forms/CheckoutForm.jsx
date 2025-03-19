@@ -42,7 +42,7 @@ export default function CheckoutForm({ data }) {
                 icon: "success"
               });
               form.reset();
-              window.location.href = "/";
+              window.location.href = "/my-bookings";
         }
         console.log(result);
     };

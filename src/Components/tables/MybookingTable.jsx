@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import DeleteBookingButton from "@/app/my-bookings/components/DeleteBookingButton";
 
 export default function MyBookingTable({ data }) {
   return (
@@ -68,9 +69,7 @@ export default function MyBookingTable({ data }) {
                           Edit
                         </button>
                       </Link>
-                      <button className="px-3 py-1 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600 transition-all duration-200">
-                        Delete
-                      </button>
+                      <DeleteBookingButton id={booking._id} />
                     </div>
                   </td>
                 </tr>
