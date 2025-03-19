@@ -1,5 +1,3 @@
-import dbConnect, { collectionNamesObject } from '@/library/dbConnect/dbConnect';
-import { ObjectId } from 'mongodb';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -78,8 +76,34 @@ export default async function ServiceDetailsPage({ params }) {
 
                 {/* Sidebar Section */}
                 <div className="p-6 bg-white rounded-xl shadow-md">
+
+
+                {/* Price and Checkout */}
+                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center">
+                        <h2 className="text-3xl font-extrabold text-gray-800 mb-2">${data.price}</h2>
+                        <p className="text-sm text-gray-500 mb-4">Exclusive offer available for a limited time!</p>
+                                  <Link href={`/checkout/${data._id}`}>
+                            <button className="
+                                bg-gradient-to-r from-red-500 to-red-700 
+                                text-white font-semibold 
+                                px-4 py-3 
+                                rounded-full 
+                                w-full 
+                                shadow-md 
+                                hover:from-red-600 hover:to-red-800 
+                                transition duration-300
+                            ">
+                                Proceed to Checkout
+                            </button>
+                        </Link>
+                    </div>
+
+
+
+
+
                     {/* Services List */}
-                    <div className="bg-white p-6 rounded-xl shadow-2xl border-gray-700 ">
+                    <div className="bg-white p-6 rounded-xl shadow-2xl border-gray-700 mt-6 ">
                         <h3 className="text-2xl font-extrabold text-gray-800 mb-4">Services</h3>
                         <ul className="space-y-3">
 
@@ -187,26 +211,7 @@ export default async function ServiceDetailsPage({ params }) {
                         </div>
                     </div>
 
-                    {/* Price and Checkout */}
-                    <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center mt-6">
-                        <h2 className="text-3xl font-extrabold text-gray-800 mb-2">${data.price}</h2>
-                        <p className="text-sm text-gray-500 mb-4">Exclusive offer available for a limited time!</p>
-
-                        <Link href={`/checkout/${data._id}`}>
-                            <button className="
-                                bg-gradient-to-r from-red-500 to-red-700 
-                                text-white font-semibold 
-                                px-4 py-3 
-                                rounded-full 
-                                w-full 
-                                shadow-md 
-                                hover:from-red-600 hover:to-red-800 
-                                transition duration-300
-                            ">
-                                Proceed to Checkout
-                            </button>
-                        </Link>
-                    </div>
+                    
                 </div>
             </div>
         </div>
