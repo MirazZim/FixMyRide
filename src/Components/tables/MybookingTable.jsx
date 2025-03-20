@@ -33,6 +33,8 @@ export default function MyBookingTable({ data }) {
                 <th className="py-4 px-6">Service Name</th>
                 <th className="py-4 px-6">Price</th>
                 <th className="py-4 px-6">Booking Date</th>
+                <th className="py-4 px-6">Phone Number</th>
+                <th className="py-4 px-6">Address</th>
                 <th className="py-4 px-6">Actions</th>
               </tr>
             </thead>
@@ -62,6 +64,8 @@ export default function MyBookingTable({ data }) {
                       year: "numeric",
                     })}
                   </td>
+                  <td className="py-4 px-6">{booking.phone}</td>
+                  <td className="py-4 px-6">{booking.address}</td>
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-3">
                       <Link href={`/my-bookings/${booking._id}`}>

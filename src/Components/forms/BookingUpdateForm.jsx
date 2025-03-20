@@ -30,12 +30,12 @@ export default function BookingUpdateForm({ data }) {
         };
         console.log("Booking Data:", bookingData);
         // Add your booking logic here (e.g., API call)
-        const res = await fetch("http://localhost:3000/api/service", {
-            method: "POST",
+        const res = await fetch(`http://localhost:3000/api/my-bookings/${data._id}`, {
+            method: "PATCH",
             body: JSON.stringify(bookingData),
         });
         const result = await res.json();
-        if (result.acknowledged) {
+        if (result.modifiedCount > 0) {
             Swal.fire({
                 title: "Good job!",
                 text: "You have successfully booked the service!",
@@ -53,7 +53,7 @@ export default function BookingUpdateForm({ data }) {
                 <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-4xl lg:w-[1140px] lg:h-[700px] border border-gray-100/30 backdrop-blur-sm">
                     <h2 className="text-center text-3xl font-bold tracking-wide text-gray-800 mb-8 mt-10">
                         <span className="block">Book Service:</span>
-                        <span className="inline-block bg-gray-100 px-3 py-1 rounded-full">{data?.title}</span>
+                        <span className="inline-block bg-gray-100 px-3 py-1 rounded-full">{data?.service_name}</span>
                     </h2>
                     <form onSubmit={handleBookingService} className="h-full flex flex-col justify-between">
                         <div className="space-y-8">
@@ -154,7 +154,7 @@ export default function BookingUpdateForm({ data }) {
                                 hover:from-red-600 hover:to-red-800 
                                 transition duration-300"
                             >
-                                Order Confirm
+                                Update  Order
                             </button>
                         </div>
 
