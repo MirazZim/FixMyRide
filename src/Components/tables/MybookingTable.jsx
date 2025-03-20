@@ -69,7 +69,7 @@ export default function MyBookingTable({ data }) {
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-3">
                       <Link href={`/my-bookings/${booking._id}`}>
-                        <button className="px-3 py-1 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition-all duration-200">
+                        <button className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
                           Edit
                         </button>
                       </Link>
