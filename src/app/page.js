@@ -1,10 +1,11 @@
 import React from 'react'
-import ServicesSection from './Home/ServicesSection/page'
+
+import HomePage from './Home/HomePage'
 
 const page = () => {
   return (
     <div>
-      <ServicesSection />
+      <HomePage />
     </div>
   )
 }

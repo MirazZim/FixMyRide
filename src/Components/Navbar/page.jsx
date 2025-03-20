@@ -12,8 +12,9 @@ export default function Navbar() {
     const links = [
         { href: "/", name: "Home" },
         { href: "/services", name: "Services" },
-        { href: "/my-bookings", name: "My Bookings" },
         { href: "/about", name: "About" },
+        ...(status === 'authenticated' ? [{ href: "/my-bookings", name: "My Bookings" }] : []), // Conditionally add link
+
         { href: "/contact", name: "Contact" },
         
     ];
@@ -83,11 +84,11 @@ export default function Navbar() {
                                             />
                                         </div>
                                     </div>
-                                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow-lg bg-base-100 rounded-box w-52 flex flex-col space-y-2 z-[1]">
+                                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow-lg bg-white rounded-box w-52 flex flex-col space-y-2 z-[1] border border-gray-200">
                                         <li>
-                                            <a className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
-                                                Profile
-                                            </a>
+                                            <Link href="/my-bookings" className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105">
+                                                My Bookings
+                                            </Link>
                                         </li>
                                         <li>
                                             <a className="px-5 py-3 bg-gradient-to-r rounded-full from-gray-100 to-gray-200 text-gray-800 font-semibold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700 hover:text-white transform transition-all duration-300 hover:scale-105" onClick={() => signOut()}>

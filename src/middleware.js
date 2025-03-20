@@ -16,4 +16,5 @@ export const config = {
         '/checkout/:path*'
 
     ]
+    
 }
