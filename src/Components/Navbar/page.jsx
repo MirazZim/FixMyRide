@@ -52,7 +52,7 @@ export default function Navbar() {
                 <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-3">
-                        <Image src="/assets/logo.svg" alt="Logo" width={480} height={480} className="h-21 w-auto" />
+                        <Image src="/assets/images/logo.png" alt="Logo" width={480} height={480} className="h-25 w-auto" />
                     </Link>
 
                     {/* Desktop Menu */}
