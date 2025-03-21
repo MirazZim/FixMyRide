@@ -3,6 +3,7 @@ import ServicesSection from './ServicesSection/page'
 import Banner from './Banner/page'
 import AboutUs from './AboutUS/page'
 import WhyChooseUs from './WhyChooseUs/page'
+import Reviews from './Reviews/page'
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
         <ServicesSection />
         <AboutUs />
         <WhyChooseUs />
+        <Reviews />
     </div>
   )
 }
