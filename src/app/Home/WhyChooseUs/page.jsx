@@ -6,6 +6,7 @@ import { GoPackage } from "react-icons/go";
 export default function WhyChooseUs() {
     return (
         <div className="container mx-auto px-6 py-24 bg-gradient-to-b bg-gray-100 overflow-hidden">
+            <h1 className="text-2xl font-bold text-red-700 mb-6 text-center tracking-tight">Core Features</h1>
            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center tracking-tight">Why Choose Us</h2>
            <p className="text-gray-600 text-xl text-center mb-12">We're committed to delivering exceptional service that exceeds your expectations. Our team of experts is dedicated to ensuring your satisfaction and providing solutions that meet your needs.</p>
 

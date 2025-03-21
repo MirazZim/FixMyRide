@@ -14,6 +14,7 @@ export default async function ServicesSection() {
     return (
         <div className='container mx-auto px-6 py-12 bg-gray-100'>
             {/* Section Header */}
+            <h1 className="text-2xl font-bold text-red-700 mb-2 text-center tracking-tight">Service</h1>
             <h1 className="text-4xl font-bold text-gray-800 mb-8 tracking-wide text-center">
                 Premium Car Services
             </h1>
@@ -35,7 +36,7 @@ export default async function ServicesSection() {
                     <div className='flex justify-between items-center mt-4  '>
                         <div>
                             <h2 className='text-xl font-bold'>{service.title}</h2>
-                            <p className='font-bold text-xl text-orange-500'>${service.price}</p>
+                            <p className='font-bold text-xl text-red-700'>${service.price}</p>
                         </div>
                         <div>
                         <Link href={`/services/${service._id}`} className='text-black hover:text-white'>

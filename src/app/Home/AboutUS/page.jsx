@@ -37,19 +37,22 @@ export default function AboutUs() {
 
           {/* Right: Text Content */}
           <div className="p-6 md:p-8 backdrop-blur-md bg-white/10 border border-white/20 rounded-xl animate-fadeIn">
-            <h3 className="text-orange-500 text-lg sm:text-xl font-semibold tracking-wide uppercase">
-              About Us
+            <h3 className="text-red-700 text-2xl font-semibold tracking-wide uppercase">
+             <strong>About Us</strong>
             </h3>
             <h1 className="mt-2 text-2xl sm:text-3xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 leading-tight font-sans uppercase">
               We are qualified & of experience in this field
             </h1>
             <p className="mt-4 text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
-              There Are Many Variations Of Passages Of Lorem Ipsum Available, But The Majority Have Suffered Alteration In Some Form, By Injected Humour, Or Randomised Words Which Don’t Look Even Slightly Believable.
+              At <strong className='text-red-800'>Fix My Ride</strong> we pride ourselves on being a team of highly qualified professionals with years of experience in the automotive industry. Our passion for cars and commitment to excellence drive us to deliver <strong className='text-red-800'>top-notch services that keep your vehicle running smoothly and safely</strong>.
             </p>
             <p className="mt-4 text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
-              The Majority Have Suffered Alteration In Some Form, By Injected Humour, Or Randomised Words Which Don’t Look Even Slightly Believable.
+              Our mission is simple: to be your trusted partner on the road. We believe in transparency, quality, and building lasting relationships with our clients.<strong className='text-red-800'> When you choose Fix My Ride, you’re choosing a team that’s as dedicated to your vehicle as you are.</strong>
             </p>
-            <button className="mt-6 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-orange-500/50">
+            <p className="mt-4 text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
+              Let us take care of your car, so you can focus on the journey ahead. Visit us today and experience the <strong className='text-red-800'>Fix My Ride</strong> difference!
+            </p>
+            <button className="mt-6 bg-gradient-to-r from-red-700 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-orange-500/50">
               Get More Info...
             </button>
           </div>

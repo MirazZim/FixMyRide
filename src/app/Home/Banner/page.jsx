@@ -62,7 +62,7 @@ export default function Banner() {
                           There Are Many Variations Of Passages Of Available, But The Majority Have Suffered Alteration In Some Form
                         </p>
                         <div className="mt-6 flex space-x-4">
-                          <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
+                          <button className="bg-gradient-to-r from-red-700 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
                             Discover More
                           </button>
                           <button className="bg-transparent border-2 border-white hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">

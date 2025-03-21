@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased  max-w-screen-xl mx-auto`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 max-w-screen-xl mx-auto`}
       >
         <NextAuthProvider >
           <Navbar />

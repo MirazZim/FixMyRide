@@ -12,10 +12,11 @@ export default function Navbar() {
     const links = [
         { href: "/", name: "Home" },
         { href: "/services", name: "Services" },
-        { href: "/about", name: "About" },
+        { href: "/Contact", name: "Contact" },
+        
         ...(status === 'authenticated' ? [{ href: "/my-bookings", name: "My Bookings" }] : []), // Conditionally add link
 
-        { href: "/contact", name: "Contact" },
+        
         
     ];
 
