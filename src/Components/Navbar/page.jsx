@@ -3,22 +3,13 @@ import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const sideMenuRef = useRef(null);
     const { data: session, status } = useSession();
-
-    const links = [
-        { href: "/", name: "Home" },
-        { href: "/services", name: "Services" },
-        { href: "/Contact", name: "Contact" },
-        
-        ...(status === 'authenticated' ? [{ href: "/my-bookings", name: "My Bookings" }] : []), // Conditionally add link
-
-        
-        
-    ];
+    const pathname = usePathname();
 
     // Handle click outside to close menu
     useEffect(() => {
@@ -46,6 +37,19 @@ export default function Navbar() {
             document.body.style.overflow = 'auto';
         };
     }, [menuOpen]);
+
+    // Now check the route after all hooks have been called
+    if (pathname.startsWith('/admin')) {
+        return null; // Don't render the Navbar on admin routes
+    }
+
+    const links = [
+        { href: "/", name: "Home" },
+        { href: "/services", name: "Services" },
+        { href: "/Contact", name: "Contact" },
+        { href: "/admin", name: "Admin" },
+        ...(status === 'authenticated' ? [{ href: "/my-bookings", name: "My Bookings" }] : []),
+    ];
 
     return (
         <>

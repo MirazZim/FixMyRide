@@ -28,7 +28,7 @@ export default function CheckoutForm({ data }) {
             service_image: data?.img,
 
         };
-        console.log("Booking Data:", bookingData);
+        // console.log("Booking Data:", bookingData);
         // Add your booking logic here (e.g., API call)
         const res = await fetch("http://localhost:3000/api/service", {
             method: "POST",
@@ -44,7 +44,7 @@ export default function CheckoutForm({ data }) {
               form.reset();
               window.location.href = "/my-bookings";
         }
-        console.log(result);
+        // console.log(result);
     };
 
     return (

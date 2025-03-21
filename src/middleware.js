@@ -13,8 +13,8 @@ export const middleware = async (req) => {
 export const config = {
     matcher: ['/my-bookings/',
         '/my-bookings/:path*',
-        '/checkout/:path*'
-
+        '/checkout/:path*',
+        '/admin/:path*'
     ]
     
 }

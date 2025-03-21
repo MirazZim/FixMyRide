@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 export default function BookingUpdateForm({ data }) {
     const { data: session } = useSession();
-    console.log(data);
+    // console.log(data);
 
 
     const handleBookingService = async (e) => {
@@ -28,7 +28,7 @@ export default function BookingUpdateForm({ data }) {
             // service_image: data?.img,
 
         };
-        console.log("Booking Data:", bookingData);
+        // console.log("Booking Data:", bookingData);
         // Add your booking logic here (e.g., API call)
         const res = await fetch(`http://localhost:3000/api/my-bookings/${data._id}`, {
             method: "PATCH",
