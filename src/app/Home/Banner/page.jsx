@@ -34,7 +34,7 @@ export default function Banner() {
   }, [api]);
 
   return (
-    <div className="w-full max-w-12/12 mx-auto">
+    <div className="w-full max-w-11/12 mx-auto bg-gray-100">
       <Carousel
         setApi={setApi}
         className="w-full"
@@ -43,7 +43,7 @@ export default function Banner() {
         <CarouselContent>
           {images.map((image, index) => (
             <CarouselItem key={index}>
-              <Card className="border-none rounded-2xl overflow-hidden">
+              <Card className="border-none  overflow-hidden  bg-gray-100">
                 <CardContent className="p-0 relative">
                   {/* Background Image with Gradient Overlay */}
                   <div

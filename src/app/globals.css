@@ -11,6 +11,21 @@
 background: linear-gradient(90deg, rgba(11,11,11,0.7819025522041764) 21%, rgba(16,16,17,0.5406032482598608) 100%);
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
